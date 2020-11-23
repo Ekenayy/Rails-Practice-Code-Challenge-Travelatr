@@ -1,0 +1,13 @@
+<h3><%= @post.title %></h3>
+
+<li><%= link_to @post.blogger.name, blogger_path(@post.blogger) %></li>
+<li><%= link_to @post.destination.name, destination_path(@post.destination) %></li>
+
+Your likes: 
+<%=@post.likes%>
+<%= button_to "Like Post", post_liked_path(@post), method: :put, class: "btn btn-info" %>
+
+
+
+
+

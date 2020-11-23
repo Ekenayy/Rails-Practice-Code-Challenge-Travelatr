@@ -1,0 +1,27 @@
+<h1>All You Need to Know About <%= @destination.name %></h1>
+
+In the great country of <%= @destination.country %>
+
+<br>
+<br>
+
+My Most Recent Posts:
+<% @destination.posts.last(5).each do |post|%>
+    <li><%= link_to post.title, post_path(post) %></li>
+<%end%>
+
+<br>
+<br>
+
+My Top Post:
+<% @top_post = @destination.posts.max_by {|p| p.likes}%>
+<li><%= link_to @top_post.title, post_path(@top_post) %></li>
+
+<br>
+<br>
+ 
+ Average Age of Bloggers Who Discuss This Place:
+ <br>
+ <% average_age = ((@destination.bloggers.sum {|blogger| blogger.age}) / @destination.bloggers.uniq.length) %>
+
+ <%= average_age %>
